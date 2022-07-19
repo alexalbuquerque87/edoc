@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<div th:fragment="pagination">
+	<div class="text-center">
+		Total Itens: [[${totalItens}]] <span th:if="${totalPaginas > 0}">- Página [[${paginaAtual}]] de [[${totalPaginas}]]</span>
+	</div>
+	
+	<nav>
+  		<ul class="pagination justify-content-center">
+  	
+  			<li th:class="${paginaAtual} > 1 ? 'page-item' : 'page-item disabled'">
+    			<a class="page-link" th:href="@{/edoc/documentos/pagina/1}">Primeira</a>
+    		</li>
+  	
+    		<li th:class="${paginaAtual} > 1 ? 'page-item' : 'page-item disabled'">
+    			<a class="page-link" th:href="@{'/edoc/documentos/pagina/' + ${paginaAtual - 1}}">Anterior</a>
+	    	</li>	
+    
+    <li th:each="i: ${#numbers.sequence(1, totalPaginas)}" th:class="${i != paginaAtual} ? 'page-item' : 'page-item active'">
+    	<a th:if="${totalPaginas > 0}" class="page-link" th:href="@{'/edoc/documentos/pagina/' + ${i}}">[[${i}]]</a>
+    </li>
+        
+    <li th:class="${paginaAtual} < ${totalPaginas} ? 'page-item' : 'page-item disabled'">
+    	<a class="page-link" th:href="@{'/edoc/documentos/pagina/' + ${paginaAtual + 1}}">Próxima</a>
+    </li>
+    
+    <li th:class="${paginaAtual} < ${totalPaginas} ? 'page-item' : 'page-item disabled'">
+    	<a class="page-link" th:href="@{'/edoc/documentos/pagina/' + ${totalPaginas}}">Última</a>
+    </li>
+    
+  </ul>
+</nav>
+</div>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="html_head">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<div th:fragment="pesquisa" th:rove="tag">
+<div class="d-flex">
+	<form class="form-inline my-2 my-lg-0 flex-grow-1" th:action="@{/edoc/documentos/busca}">
+	<input class="form-control mr-sm-2" 
+			type="text" name="pesquisa" size="50" placeholder="Pesquisar documento" th:value="${pesquisa}" required/>
+		<input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Pesquisar" />
+		<input class="btn btn-outline-secondary my-2 my-sm-0" type="reset" value="Limpar" />
+	</form>	
+	</div>
+</div>
+
+</html>

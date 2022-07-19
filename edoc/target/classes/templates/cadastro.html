@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="https://www.thymeLeaf.org">
+
+<head th:replace="frag_header :: html_head">
+	<meta charset="UTF-8">
+</head>
+
+<body>
+<div th:replace="frag_navbar :: navbar" th:remove="tag"></div>
+
+<div class="container text-center" style="min-height: 548px">
+	<h1>Cadastro de novo documento</h1>
+	<form method="post" enctype="multipart/form-data" th:action="@{/edoc/cadastro/salvar}">		
+		<input class="form-control w-50 position-relative top-0 start-50 translate-middle-x"
+				style="margin: 10px" 
+				type="file" 
+				name="arquivo" 
+				multiple 
+				required
+				id="file"
+				onchange="return validaPdf()"/>
+		<input class="btn btn-primary" type="submit" value="Salvar" />
+	</form>
+	<div>
+		<h3 class="text-danger fs-5">[[${error}]]</h3>
+	</div>
+</div>
+	<footer th:replace="frag_footer :: html_footer"></footer>
+	
+	<script type="text/javascript" th:src="@{/js/javascript.js}">
+	</script>
+	
+</body>
+</html>

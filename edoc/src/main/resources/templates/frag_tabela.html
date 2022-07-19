@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="html_head">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<div th:fragment="tabela" th:rove="tag">
+<div style="margin-top: 10px">
+	<table class="table table-striped table-bordered table-hover" style="margin: 0px">
+		<thead>
+			<tr>
+				<th class="text-center w-100">Procedimento</th>
+				<th class="text-center" colspan='2'>Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="documentos : ${documento}">
+			<td><a th:href="@{/edoc/{nome} (nome=${documentos.nome})}" 
+					th:target="_blank">[[${documentos.nome}]]</a></td>
+			<td><a type="button" class="btn btn-primary" 
+					th:href="@{/edoc/{nome} (nome=${documentos.nome})}" 
+					th:target="_blank">Abrir</a></td>
+			<td><a type="button" class="btn btn-danger" th:href="@{/edoc/delete/{id} (id=${documentos.id})}" 
+					th:confirmaExcluir="|Deseja excluir o documento ${documentos.nome}?|"
+					onclick="if (!confirm(this.getAttribute('confirmaExcluir'))) return false">
+					Excluir</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</div>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="frag_header :: html_head">
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<div th:replace="frag_navbar :: navbar" th:remove="tag"></div>
+
+	<div class="container" style="min-height: 470px">
+
+		<h1 class="text-center">Resultado de pesquisa por: [[${pesquisa}]]</h1>
+		<div th:replace="frag_pesquisa :: pesquisa" th:remove="tag"></div>
+		<div th:replace="frag_tabela :: tabela" th:remove="tag"></div>
+	
+	</div>
+<footer th:replace="frag_footer :: html_footer"></footer>
+</body>
+</html>
